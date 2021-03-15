@@ -1,44 +1,44 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void ler_pesos(int *qtd_planetas, int *pesos){
+void ler_pesos(int *n, int *pesos){
 
     int j;
 
-    for(j=0; j <= *qtd_planetas; j++){
+    for(j=0; j <= *n; j++){
             scanf("%d", &pesos[j]);
         }
 }
 
 int main(int numargs, char *args[]){
 
-    int instancias, i = 0, j;
-    int *qtd_planetas, *max_conquistados, *pesos;
+    int t, i = 0, j;
+    int n, k, *pesos;
 
-    scanf("%d", &instancias);
-    printf("%d\n", instancias); 
+    scanf("%d", &t);
+    printf("%d\n", t); 
 
-    qtd_planetas = (int *) calloc(instancias, sizeof(int));
-    max_conquistados = (int *) calloc(instancias, sizeof(int));
+    //n = (int *) calloc(t, sizeof(int));
+    //k = (int *) calloc(t, sizeof(int));
 
     do{
-        scanf("%d %d", &qtd_planetas[i], &max_conquistados[i]);
-        printf("%d %d\n", qtd_planetas[i], max_conquistados[i]); 
+        scanf("%d %d", &n, &k);
+        printf("%d %d\n", n, k); 
         
-        pesos = (int *) calloc(qtd_planetas[i] + 1, sizeof(int));
+        pesos = (int *) calloc(n + 1, sizeof(int));
 
-        ler_pesos(&qtd_planetas[i], pesos);
+        ler_pesos(&n, pesos);
 
         // Chama dos algoritmos de resolução
 
         // Verificar os pesos
-        for(j=0; j <= qtd_planetas[i]; j++){
+        for(j=0; j <= n; j++){
             printf("%d\n", pesos[j]);
         }
 
         i = i + 1;
 
-    } while (i < instancias);
+    } while (i < t);
 
 
 
