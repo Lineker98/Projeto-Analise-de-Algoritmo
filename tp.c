@@ -18,8 +18,6 @@ int main(int numargs, char *args[]){
     scanf("%d", &t);
     printf("%d\n", t); 
 
-    //n = (int *) calloc(t, sizeof(int));
-    //k = (int *) calloc(t, sizeof(int));
 
     do{
         scanf("%d %d", &n, &k);
@@ -37,33 +35,10 @@ int main(int numargs, char *args[]){
         }
 
         i = i + 1;
+        free(pesos);
 
     } while (i < t);
 
-
-
-    /*
-    int *p;
-    p = (int *) malloc(5*sizeof(int));
-    int i;
-    for(i = 0; i < 5; i++){
-        printf("\nDigite p[%d]: ", i);
-        scanf("%d", &p[i]);
-    }
-    for(i = 0; i < 5; i++){
-        printf("\np[%d] = %d ", i, p[i]);
-    }
-
-    p = (int *) realloc(p, 7*sizeof(int));
-    for(i = 5; i < 7; i++){
-        printf("\nDigite p[%d]: ", i);
-        scanf("%d", &p[i]);
-    }
-    for(i = 0; i < 7; i++){
-        printf("\np[%d] = %d ", i, p[i]);
-    }
-
-    free(p);*/
 
     return 0;
 }
