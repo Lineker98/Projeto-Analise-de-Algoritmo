@@ -14,23 +14,22 @@ void ler_pesos(int *n, int *pesos)
 
 int main(int numargs, char *args[])
 {
-  int t, i = 0;
+  int t, i = 0, j;
   int n, k, solution, *pesos;
-  bool PD = false, AG = false, FB = false;
+  int PD = false, AG = false, FB = false;
 
   scanf("%d", &t);
 
-
-  for(i=1; i < numargs; i++){
-    if( strcmp(args[i], "FB") ){
+  for(j=1; j < numargs; j++){
+    if( strcmp(args[j], "FB") ){
       FB = true;
     }
     
-    else if ( strcmp(args[i], "PD") ){
+    else if ( strcmp(args[j], "PD") ){
       PD = true;
     }
 
-    else if ( strcmp(args[i], "AG") ){
+    else if ( strcmp(args[j], "AG") ){
       AG = true;
     }
   }
@@ -49,22 +48,20 @@ int main(int numargs, char *args[])
       solution = brute_force(n, k, pesos);
       printf("%d\n", solution);
     }
-    else if ( PD )
+    if ( PD )
     {
       /* code */
     }
-    else if ( AG )
+    if ( AG )
     {
       /* code */
     }
-    
-    
+
     i = i + 1;
 
     free(pesos);
-    
 
   } while (i < t);
-
+  
   return 0;
 }
