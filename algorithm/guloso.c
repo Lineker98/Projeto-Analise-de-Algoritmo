@@ -2,9 +2,9 @@
 
 void esolhe_planeta(int n, int *peso_planeta, int *planetas_escolhidos){
 
-    int max = peso_planeta[0], indice = 0;
+    int max = -1, indice = 0;
 
-    for(int i = 1; i<n; i++)
+    for(int i = 0; i<n; i++)
     {
         if(peso_planeta[i] > max && planetas_escolhidos[i] != 1){
             max = peso_planeta[i];
