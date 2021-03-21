@@ -12,27 +12,37 @@ void ler_pesos(int *n, int *pesos)
   }
 }
 
+
+void escolhe_algoritmos(int *numargs, char *args[], bool *PD, bool *AG, bool *FB)
+{
+
+  int j;
+
+  for(j=1; j < *numargs; j++){
+    if( strcmp(args[j], "FB") == 0 ){
+      *FB = true;
+    }
+    
+    if( strcmp(args[j], "PD") == 0 ){
+      *PD = true;
+    }
+
+    if( strcmp(args[j], "AG") == 0){
+      *AG = true;
+    }
+  }
+}
+
+
 int main(int numargs, char *args[])
 {
-  int t, i = 0, j;
+  int t, i = 0;
   int n, k, solution, *pesos;
-  int PD = false, AG = false, FB = false;
+  bool PD = false, AG = false, FB = false;
 
   scanf("%d", &t);
 
-  for(j=1; j < numargs; j++){
-    if( strcmp(args[j], "FB") ){
-      FB = true;
-    }
-    
-    else if ( strcmp(args[j], "PD") ){
-      PD = true;
-    }
-
-    else if ( strcmp(args[j], "AG") ){
-      AG = true;
-    }
-  }
+  escolhe_algoritmos(&numargs, args, &PD, &AG, &FB);
 
   do
   {
