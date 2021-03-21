@@ -28,8 +28,7 @@ int main(int numargs, char *args[])
     solution = brute_force(n, k, pesos);
     printf("%d\n", solution);
     i = i + 1;
-    guloso(n, k, pesos);
-
+    //guloso(n, k, pesos);
 
     free(pesos);
 
