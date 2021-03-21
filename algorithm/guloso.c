@@ -1,25 +1,27 @@
 #include "guloso.h"
 
-int esolhe_planeta(int n, int peso_planeta[], int max_anterior){
+void esolhe_planeta(int n, int *peso_planeta, int *planetas_escolhidos){
 
     int max = peso_planeta[0], indice = 0;
 
     for(int i = 1; i<n; i++)
     {
-        if(peso_planeta[i] > max && i != max_anterior){
+        if(peso_planeta[i] > max && planetas_escolhidos[i] != 1){
             max = peso_planeta[i];
             indice = i;
         }
 
     }
 
-    return indice;
+    planetas_escolhidos[indice] = 1;
+
+    return;
 }
 
 void guloso(int n, int k, int* path)
 {
 
-    int i;
+    int i; 
     int *peso_planeta, *planetas_escolhidos;
 
     peso_planeta = (int *) calloc(n - 1, sizeof(int));
@@ -30,5 +32,9 @@ void guloso(int n, int k, int* path)
         planetas_escolhidos[i] = 0;
     }
 
-    
+    for(i = 0; i < k; i++){
+
+        esolhe_planeta(n, peso_planeta, planetas_escolhidos);
+
+    }
 }
