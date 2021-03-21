@@ -1,4 +1,5 @@
 #include "./algorithm/brute_force.h"
+#include "./algorithm/guloso.h"
 
 void ler_pesos(int *n, int *pesos)
 {
@@ -27,6 +28,8 @@ int main(int numargs, char *args[])
     solution = brute_force(n, k, pesos);
     printf("%d\n", solution);
     i = i + 1;
+    guloso(n, k, pesos);
+
 
     free(pesos);
 
