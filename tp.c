@@ -13,8 +13,8 @@ void ler_pesos(int *n, int *pesos)
 int main(int numargs, char *args[])
 {
   int t, i = 0;
-  int n, k, *pesos;
-  //int solution;
+  int n, k, solution, *pesos;
+
 
   scanf("%d", &t);
 
@@ -28,9 +28,9 @@ int main(int numargs, char *args[])
 
     //solution = brute_force(n, k, pesos);
     //printf("%d\n", solution);
-    guloso(n, k, pesos);
+    solution = guloso(n, k, pesos);
+    printf("%d\n", solution);
     i = i + 1;
-    //guloso(n, k, pesos);
 
     free(pesos);
 

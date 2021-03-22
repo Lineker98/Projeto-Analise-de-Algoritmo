@@ -3,6 +3,6 @@
 
 #include "../libraries/planet.h"
 
-void guloso(int n, int k, int* path);
+int guloso(int n, int k, int* path);
 
 #endif 
