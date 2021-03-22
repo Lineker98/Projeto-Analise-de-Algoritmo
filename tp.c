@@ -1,5 +1,7 @@
 #include "./algorithm/brute_force.h"
 #include "./algorithm/guloso.h"
+#include<stdbool.h>
+#include<string.h>
 
 void ler_pesos(int *n, int *pesos)
 {
@@ -59,11 +61,12 @@ int main(int numargs, char *args[])
     }
     if ( PD )
     {
-      /* code */
+        /* code */
     }
     if ( AG )
     {
-      /* code */
+      solution = guloso(n, k, pesos);
+      printf("%d\n", solution);
     }
 
     i = i + 1;
