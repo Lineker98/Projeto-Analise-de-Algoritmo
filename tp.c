@@ -1,7 +1,5 @@
 #include "./algorithm/brute_force.h"
-#include<string.h>
-#include<stdbool.h>
-
+#include "./algorithm/guloso.h"
 
 void ler_pesos(int *n, int *pesos)
 {
@@ -39,6 +37,7 @@ int main(int numargs, char *args[])
   int t, i = 0;
   int n, k, solution, *pesos;
   bool PD = false, AG = false, FB = false;
+
 
   scanf("%d", &t);
 
