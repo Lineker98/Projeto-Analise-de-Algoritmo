@@ -38,25 +38,45 @@ int summation(int start, int end, int *vector)
   return aux;
 }
 
-int jamisson = 0;
-
-int dynamic_algorithm(int n, int k, int p, int size, int *paths)
+int dynamic_algorithm(int n, int k, int p, int start, int size, int *paths)
 {
-  printf("n = %d, k = %d, p = %d\n", n, k, p);
+  //printf("n = %d, k = %d, p = %d start = %d\n", n, k, p, start);
 
-  if (n <= k || k == 0)
+  if (k == 0)
   {
+    // printf("sumation = %d\n", summation(0, start, paths));
     p = max(
-        p, summation(size - (n + 1), size, paths));
-    printf("max = %d\n", p);
+        p, summation(0, start, paths));
+    // printf("max = %d\n", p);
     return p;
   }
 
-  jamisson = jamisson + 1;
+  if (n <= k)
+  {
+    return dynamic_algorithm(
+        n - 1,
+        k - 1,
+        max(p, summation(n, start, paths)),
+        n,
+        size,
+        paths);
+  }
 
-  return min(
-      dynamic_algorithm(n - 1, k - 1, max(p, summation(jamisson-1, jamisson+1, paths)), size, paths),
-      dynamic_algorithm(n - 1, k, p, size, paths));
+  return min(dynamic_algorithm(
+                 n - 1,
+                 k - 1,
+                 max(p, summation(n, start, paths)),
+                 n,
+                 size,
+                 paths),
+
+             dynamic_algorithm(
+                 n - 1,
+                 k,
+                 max(p, summation(n - 1, start, paths)),
+                 start,
+                 size,
+                 paths));
 }
 
 int main(int numargs, char *args[])
@@ -89,9 +109,8 @@ int main(int numargs, char *args[])
       break;
 
     case 3:
-      solution = dynamic_algorithm(n, k, 0, n + 1, pesos);
+      solution = dynamic_algorithm(n, k, 0, n + 1, n + 1, pesos);
       printf("%d\n", solution);
-      jamisson = -1;
 
       break;
     }
