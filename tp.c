@@ -38,44 +38,39 @@ int summation(int start, int end, int *vector)
   return aux;
 }
 
-int dynamic_algorithm(int n, int k, int p, int *paths)
+int dynamic_algorithm(int n, int k, int *paths)
 {
-  //printf("n = %d, k = %d, p = %d\n", n, k, p);
-
   if (n == 0)
   {
-    return p;
+    return 0;
   }
 
   else if (k == 0)
   {
-    //printf("sumation = %d\n", summation(0, n + 1, paths));
-    p = max(
-        p, summation(0, n + 1, paths));
-    //printf("max = %d\n", p);
-    return p;
+    return summation(0, n + 1, paths);
   }
 
   else if (n <= k)
   {
-    return dynamic_algorithm(
-        n - 1,
-        k - 1,
-        max(p, paths[n - 1]),
-        paths);
+    return max(
+        dynamic_algorithm(n - 1, k - 1, paths),
+        paths[n - 1]);
   }
 
-  return min(dynamic_algorithm(
-                 n - 1,
-                 k - 1,
-                 max(p, paths[n]),
-                 paths),
+  return min(
+      max(
+          dynamic_algorithm(n - 1, k - 1, paths),
+          paths[n]
 
-             dynamic_algorithm(
-                 n - 1,
-                 k,
-                 max(p, paths[n] + paths[n - 1]),
-                 paths));
+          ),
+
+      max(
+          dynamic_algorithm(n - 1, k, paths),
+          paths[n] + paths[n - 1]
+
+          )
+
+  );
 }
 
 int main(int numargs, char *args[])
@@ -108,7 +103,7 @@ int main(int numargs, char *args[])
       break;
 
     case 3:
-      solution = dynamic_algorithm(n, k, 0, pesos);
+      solution = dynamic_algorithm(n, k, pesos);
       printf("%d\n", solution);
 
       break;
