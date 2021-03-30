@@ -65,12 +65,70 @@ int dynamic_algorithm(int n, int k, int sum, int *paths)
           ),
 
       max(
-          dynamic_algorithm(n - 1, k,sum + paths[n], paths),
-          sum + paths[n] + paths[n-1] 
+          dynamic_algorithm(n - 1, k, sum + paths[n], paths),
+          sum + paths[n] + paths[n - 1]
 
           )
 
   );
+}
+
+int dynamic_algorithm2(int n, int k, int *paths)
+{
+  int mat[n + 1][k + 1];
+  int sum[n + 1];
+  int i;
+
+  for (i = 0; i <= k; i++)
+  {
+    mat[0][i] = 0;
+  }
+
+  for (i = 1; i <= n; i++)
+  {
+    mat[i][0] = summation(0, i, paths);
+  }
+
+  for (int i = 1; i <= n; i++)
+  {
+    for (int j = 1; j <= k; j++)
+    {
+
+      if (i <= j)
+      {
+        mat[i][j] = max(mat[i - 1][j - 1], paths[i - 1]);
+      }
+
+      else
+      {
+        mat[i][j] = //min(
+            // max(
+            //     mat[i - 1][j - 1],
+            //     paths[i]
+
+            //     );//,
+
+            max(
+                mat[i - 1][j],
+                paths[i] + paths[i - 1]
+
+                );
+
+//        );
+      }
+    }
+  }
+
+  for (int i = 0; i <= n; i++)
+  {
+    for (int j = 0; j <= k; j++)
+    {
+      printf(" [%d] ", mat[i][j]);
+    }
+    printf("\n");
+  }
+
+  return mat[n][k];
 }
 
 int main(int numargs, char *args[])
@@ -103,7 +161,7 @@ int main(int numargs, char *args[])
       break;
 
     case 3:
-      solution = dynamic_algorithm(n, k, 0, pesos);
+      solution = dynamic_algorithm2(n, k, pesos);
       printf("%d\n", solution);
 
       break;
