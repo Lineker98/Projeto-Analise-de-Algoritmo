@@ -76,7 +76,6 @@ int dynamic_algorithm(int n, int k, int sum, int *paths)
 int dynamic_algorithm2(int n, int k, int *paths)
 {
   int mat[n + 1][k + 1];
-  int sum[n + 1];
   int i;
 
   for (i = 0; i <= k; i++)
@@ -101,20 +100,20 @@ int dynamic_algorithm2(int n, int k, int *paths)
 
       else
       {
-        mat[i][j] = //min(
-            // max(
-            //     mat[i - 1][j - 1],
-            //     paths[i]
+        mat[i][j] = min(
+            max(
+                mat[i - 1][j - 1],
+                paths[i]
 
-            //     );//,
+                ),
 
             max(
                 mat[i - 1][j],
                 paths[i] + paths[i - 1]
 
-                );
+                )
 
-//        );
+        );
       }
     }
   }
@@ -161,7 +160,7 @@ int main(int numargs, char *args[])
       break;
 
     case 3:
-      solution = dynamic_algorithm2(n, k, pesos);
+      solution = dynamic_algorithm(n, k, 0, pesos);
       printf("%d\n", solution);
 
       break;
