@@ -2,8 +2,7 @@
 #include "./algorithm/guloso.h"
 #include "./libraries/input_function.h"
 
-int max(int a, int b)
-{
+int max(int a, int b){
   if (a > b)
   {
     return a;
