@@ -37,47 +37,56 @@ int summation(int start, int end, int *vector)
   return aux;
 }
 
-int dynamic_algorithm2(int n, int k, int *paths)
+int dynamic_algorithm2(int atual, int n, int k, int *path)
 {
-  int mat[n + 1][k + 1];
-  int i;
+  int mat[atual + 1][n + 1][k + 1];
+  int i, j, l;
 
-  for (i = 0; i <= k; i++)
+  for (i = 0; i <= atual; i++)
   {
-    mat[0][i] = 0;
+    for (j = 0; j <= k; j++)
+    {
+      mat[i][0][j] = 0;
+    }
+  }
+
+  for (i = 0; i <= atual; i++)
+  {
+    for (j = 0; j <= n; j++)
+    {
+      mat[i][j][0] = summation(0, i, path);
+    }
   }
 
   for (i = 1; i <= n; i++)
   {
-    mat[i][0] = summation(0, i, paths);
-  }
-
-  for (int i = 1; i <= n; i++)
-  {
-    for (int j = 1; j <= k; j++)
+    for (j = 1; j <= k; j++)
     {
-
-      if (i <= j)
+      for (l = 0; l <= atual; l++)
       {
-        mat[i][j] = max(mat[i - 1][j - 1], paths[i - 1]);
-      }
 
-      else
-      {
-        mat[i][j] = min(
-            max(
-                mat[i - 1][j - 1],
-                paths[i]
+        if (i <= j)
+        {
+          mat[l][i][j] = max(mat[i][i - 1][j - 1], summation(i, l, path));
+        }
 
-                ),
+        else
+        {
+          mat[l][i][j] = min(
+              max(
+                  mat[n][i - 1][j - 1],
+                  summation(i, l, path)
 
-            max(
-                mat[i - 1][j],
-                paths[i] + paths[i - 1]
+                      ),
 
-                )
+              max(
+                  mat[l][i - 1][j],
+                  summation(i - 1, l, path)
 
-        );
+                      )
+
+          );
+        }
       }
     }
   }
@@ -86,18 +95,23 @@ int dynamic_algorithm2(int n, int k, int *paths)
   {
     for (int j = 0; j <= k; j++)
     {
-      printf(" [%d] ", mat[i][j]);
+      printf("[");
+      for (int l = 1; l <= atual; l++)
+      {
+        printf(" %d ", mat[l][i][j]);
+      }
+      printf("], ");
     }
     printf("\n");
   }
 
-  return mat[n][k];
+  return mat[n][n][k];
 }
 
 int dynamic_algorithm(int atual, int n, int k, int *path)
 {
 
-  //printf("atual = %d n = %d k = %d\n", atual, n, k);
+  printf("atual = %d n = %d k = %d\n", atual, n, k);
 
   if (k == 0)
   {
@@ -169,7 +183,7 @@ int main(int numargs, char *args[])
       break;
 
     case 3:
-      solution = dynamic_algorithm(n + 1, n, k, pesos);
+      solution = dynamic_algorithm2(n + 1, n, k, pesos);
       printf("%d\n", solution);
 
       break;
