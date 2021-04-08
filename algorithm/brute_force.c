@@ -35,7 +35,7 @@ int brute_force(int n, int k, int* path)
       for (int z = 0; z < k; z++)
       {
         end = combination[z];
-        value = travel_cost(start, end, path);
+        value = travel_cost(start, end + 1, path);
 
         //printf("%d\n", value);
         if (value > max_local)
@@ -47,7 +47,7 @@ int brute_force(int n, int k, int* path)
       }
 
       end = n;
-      value = travel_cost(start, end, path);
+      value = travel_cost(start, end + 1, path);
 
       if (value > max_local)
       {
