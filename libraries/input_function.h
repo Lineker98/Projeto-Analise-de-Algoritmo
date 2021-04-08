@@ -5,8 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-void read_path(int n, int *pesos); 
+void read_path(int n, int *pesos);
 
 int choose_algorithm(int numargs, char *args[]);
 
-#endif  
+#endif

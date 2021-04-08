@@ -2,11 +2,12 @@
 
 void print_binary(unsigned int number)
 {
-    if (number >> 1) {
-        print_binary(number >> 1);
-    }
-    //putc((number & 1) ? '1' : '0', stdout);
-    printf("%d", number & 1);
+  if (number >> 1)
+  {
+    print_binary(number >> 1);
+  }
+
+  printf("%d", number & 1);
 }
 
 int number_of_bits_1(int max, int num)
@@ -28,13 +29,13 @@ int number_of_bits_1(int max, int num)
   return k;
 }
 
-int* return_combination(int c, int array[])
+int *return_combination(int c, int array[])
 {
   int i = 0, j = 0;
   int mask = 1;
   int max = (int)floor(log2(c) + 1);
-  
-  int* combination = (int*)malloc(max * sizeof(int));
+
+  int *combination = (int *)malloc(max * sizeof(int));
 
   while (max > 0)
   {
