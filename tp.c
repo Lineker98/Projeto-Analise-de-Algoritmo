@@ -63,7 +63,7 @@ int dynamic_algorithm2(int atual, int n, int k, int *path)
   {
     for (j = 1; j <= k; j++)
     {
-      for (l = 0; l <= atual; l++)
+      for (l = 1; l <= atual; l++)
       {
 
         if (i <= j)
@@ -75,7 +75,7 @@ int dynamic_algorithm2(int atual, int n, int k, int *path)
         {
           mat[l][i][j] = min(
               max(
-                  mat[n][i - 1][j - 1],
+                  mat[i][i - 1][j - 1],
                   summation(i, l, path)
 
                       ),
@@ -92,30 +92,30 @@ int dynamic_algorithm2(int atual, int n, int k, int *path)
     }
   }
 
-  for (int i = 0; i <= n; i++)
-  {
-    for (int j = 0; j <= k; j++)
-    {
-      printf("[");
-      for (int l = 1; l <= atual; l++)
-      {
-        printf(" %d ", mat[l][i][j]);
-      }
-      printf("], ");
-    }
-    printf("\n");
-  }
+  // for (int i = 0; i <= n; i++)
+  // {
+  //   for (int j = 0; j <= k; j++)
+  //   {
+  //     printf("[");
+  //     for (int l = 1; l <= atual; l++)
+  //     {
+  //       printf(" %d ", mat[l][i][j]);
+  //     }
+  //     printf("], ");
+  //   }
+  //   printf("\n");
+  // }
 
-  return mat[n][n][k];
+  return mat[atual][n][k];
 }
 
 int dynamic_algorithm(int atual, int n, int k, int *path)
 {
 
-  printf("atual = %d n = %d k = %d\n", atual, n, k);
-
   if (k == 0)
   {
+    //printf("atual = %d n = %d k = %d \n", atual, n, k);
+    //printf("k == 0 %d\n", summation(0, atual, path));
     return summation(0, atual, path);
   }
 
@@ -126,11 +126,16 @@ int dynamic_algorithm(int atual, int n, int k, int *path)
 
   else if (n <= k)
   {
-    return max(
+    int maxl = max(
         summation(n, atual, path),
         dynamic_algorithm(n, n - 1, k - 1, path)
 
     );
+
+    //printf("atual = %d n = %d k = %d \n", atual, n, k);
+    //printf("n <= k %d\n", maxl);
+
+    return maxl;
   }
 
   int maxL =
@@ -146,6 +151,9 @@ int dynamic_algorithm(int atual, int n, int k, int *path)
           dynamic_algorithm(atual, n - 1, k, path)
 
       );
+
+  //printf("atual = %d n = %d k = %d \n", atual, n, k);
+  //printf("--> %d %d\n", maxL, maxL1);
 
   return min(
       maxL,
