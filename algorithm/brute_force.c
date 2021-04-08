@@ -1,7 +1,21 @@
 #include "brute_force.h"
 
-int brute_force(int n, int k, int* path)
+int brute_force(int n, int k, int *path)
 {
+  /*
+  Entrada: n --> numero de planetas possíveis
+           k --> número de planetas a serem conquistados
+           path --> peso das viagens entre os planetas
+  
+  Saida: valor do maio caminho para conquistar k planetas de forma ótima
+
+  Para o força bruta utilizamos a ideia de combinações tomados k planetas,
+  para identificar esses combinações utilizamos sequêcias de números binarios
+  que contiam k quantidades de 1s. Ou seja, supondo que gostariamos de conquistar
+  2 planetas dentre 3 possíveis, as possibilidades seriam: [011, 101, 110]. Após isso,
+  avaliamos maior custo de cada uma dessas viagens e encontramos aquele que seja ótima.
+  */
+
   int planets[n];
 
   for (int i = 0; i < n; i++)
@@ -37,7 +51,6 @@ int brute_force(int n, int k, int* path)
         end = combination[z];
         value = travel_cost(start, end + 1, path);
 
-        //printf("%d\n", value);
         if (value > max_local)
         {
           max_local = value;
@@ -54,12 +67,13 @@ int brute_force(int n, int k, int* path)
         max_local = value;
       }
 
-      if(max_local < min_global){
+      if (max_local < min_global)
+      {
         min_global = max_local;
       }
       free(combination);
     }
   }
-  
+
   return min_global;
 }

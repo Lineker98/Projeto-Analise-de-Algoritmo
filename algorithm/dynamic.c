@@ -2,6 +2,20 @@
 
 int dynamic_algorithm(int atual, int n, int k, int *path)
 {
+  /*
+  Entrada: atual --> o planeta atual, iniciado por n+1
+           n --> numero de planetas possíveis
+           k --> número de planetas a serem conquistados
+           path --> peso das viagens entre os planetas
+  
+  Saida: valor do maio caminho para conquistar k planetas de forma ótima
+
+  Basendo na recorrência (função dynamic_recorrencia logo em baixo desse
+  script) utilizou-se a técnica da programação dinamica para resolver o ploblema. 
+  de forma que i representou a variação de n, j a variação de k e l a variação do
+  atual.
+  */
+
   int mat[atual + 1][n + 1][k + 1];
   int i, j, l;
 
@@ -73,6 +87,22 @@ int dynamic_algorithm(int atual, int n, int k, int *path)
 
 int dynamic_recorrencia(int atual, int n, int k, int *path)
 {
+  /*
+  Entrada: atual --> o planeta atual, iniciado por n+1
+           n --> numero de planetas possíveis
+           k --> número de planetas a serem conquistados
+           path --> peso das viagens entre os planetas
+  
+  Saida: valor do maio caminho para conquistar k planetas de forma ótima
+
+  Para o programação dinâmica criamos essa recorrência que segue a seguinte 
+  lógica:
+    se k = 0, já foi conquistado todos os planetas possíveis;
+    se n = 0, não tem planeta para ser conquistado
+    se n <=k, eu preciso conquistar o próximos planetas
+    caso o contrátio, avalio se é melhor conquistar o planeta ou pular ele.
+  */
+ 
   if (k == 0)
   {
     return travel_cost(0, atual, path);
