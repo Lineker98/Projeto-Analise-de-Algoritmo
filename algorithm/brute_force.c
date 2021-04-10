@@ -7,11 +7,11 @@ int brute_force(int n, int k, int *path)
            k --> número de planetas a serem conquistados
            path --> peso das viagens entre os planetas
   
-  Saida: valor do maio caminho para conquistar k planetas de forma ótima
+  Saida: valor do maior caminho para conquistar k planetas de forma ótima
 
   Para o força bruta utilizamos a ideia de combinações tomados k planetas,
   para identificar esses combinações utilizamos sequêcias de números binarios
-  que contiam k quantidades de 1s. Ou seja, supondo que gostariamos de conquistar
+  que continham k quantidades de 1s. Ou seja, supondo que gostariamos de conquistar
   2 planetas dentre 3 possíveis, as possibilidades seriam: [011, 101, 110]. Após isso,
   avaliamos maior custo de cada uma dessas viagens e encontramos aquele que seja ótima.
   */

@@ -8,11 +8,11 @@ int dynamic_algorithm(int atual, int n, int k, int *path)
            k --> número de planetas a serem conquistados
            path --> peso das viagens entre os planetas
   
-  Saida: valor do maio caminho para conquistar k planetas de forma ótima
+  Saida: valor do maior caminho para conquistar k planetas de forma ótima
 
   Basendo na recorrência (função dynamic_recorrencia logo em baixo desse
   script) utilizou-se a técnica da programação dinamica para resolver o ploblema. 
-  de forma que i representou a variação de n, j a variação de k e l a variação do
+  De forma que i representou a variação de n, j a variação de k e l a variação do
   atual.
   */
 
