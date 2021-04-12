@@ -2,6 +2,7 @@
 #define DYNAMIC_H
 
 #include "../libraries/planet.h"
+#include "../libraries/matrix.h"
 
 int dynamic_algorithm(int atual, int n, int k, int *path);
 
