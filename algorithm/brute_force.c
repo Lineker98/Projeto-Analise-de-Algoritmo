@@ -15,6 +15,10 @@ int brute_force(int n, int k, int *path)
   2 planetas dentre 3 possíveis, as possibilidades seriam: [011, 101, 110]. Após isso,
   avaliamos maior custo de cada uma dessas viagens e encontramos aquele que seja ótima.
   */
+  if (n > 62)
+  {
+    return -1;
+  }
 
   int planets[n];
 
@@ -23,7 +27,7 @@ int brute_force(int n, int k, int *path)
     planets[i] = i;
   }
 
-  int max_combination = pow(2, n) - 1;
+  unsigned long long int max_combination = pow(2, n) - 1;
   int size_combination;
 
   int *combination;
@@ -34,7 +38,7 @@ int brute_force(int n, int k, int *path)
   int min_global = (int)INFINITY;
   int max_local;
 
-  for (int i = 0; i <= max_combination; i++)
+  for (unsigned long long int i = 0; i <= max_combination; i++)
   {
     start = 0;
     end = 0;

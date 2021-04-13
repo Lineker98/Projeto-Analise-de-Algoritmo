@@ -15,7 +15,7 @@ void print_binary(unsigned int number)
   printf("%d", number & 1);
 }
 
-int number_of_bits_1(int max, int num)
+int number_of_bits_1(unsigned long long int max, unsigned long long int num)
 {
   /*
   Entrada: max --> maior número representado pela quantidade de bits
@@ -23,7 +23,7 @@ int number_of_bits_1(int max, int num)
 
   Saida: Quantidade de bits 1s que a forma binaria do num possui.
   */
-  int mask = 1;
+  unsigned long long int mask = 1;
   int k = 0;
 
   while (max > 0)
@@ -40,7 +40,7 @@ int number_of_bits_1(int max, int num)
   return k;
 }
 
-int *return_combination(int c, int array[])
+int *return_combination(unsigned long long int c, int array[])
 {
   /*
   Entrada: c --> número binário que representa a combinação
@@ -52,7 +52,7 @@ int *return_combination(int c, int array[])
   */
 
   int i = 0, j = 0;
-  int mask = 1;
+  unsigned long long int mask = 1;
   int max = (int)floor(log2(c) + 1);
 
   int *combination = (int *)malloc(max * sizeof(int));

@@ -7,8 +7,8 @@
 
 void print_binary(unsigned int number);
 
-int number_of_bits_1(int max, int num);
+int number_of_bits_1(unsigned long long int max, unsigned long long int num);
 
-int *return_combination(int c, int array[]);
+int *return_combination(unsigned long long int c, int array[]);
 
 #endif
